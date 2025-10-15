@@ -1,36 +1,65 @@
 const imagemVisualizacao = document.querySelector("#visualizacao img");
 const tituloProduto = document.querySelector("h1");
+const nomeCorSelecionada = document.querySelector("#nome-cor-selecionada");
+const imagemMiniatura0 = document.querySelector('[for="0-imagem"] img');
+const imagemMiniatura1 = document.querySelector('[for="1-imagem"] img');
+const imagemMiniatura2 = document.querySelector('[for="2-imagem"] img');
 
-const opcoesTamanho = ['41 mm', '45 mm'];
+// console.log(imagemMiniatura0);
 
+const opcoesTamanho = ["41 mm", "45 mm"];
+const opcoesCores = [
+  "Verde-cipreste",
+  "Azul-inverno",
+  "Meia-noite",
+  "Estelar",
+  "Rosa-claro",
+];
 //console.log(opcoesTamanho[1]);
 
 let numImagemSelecionada = 1;
-
 let numTamanhoSelecionado = 1;
+let numCorSelecionada = 1;
+
+function atualizarCorSelecionada() {
+  const opcaoCorSelecionada = document
+    .querySelector('[name="opcao-cor"]:checked')
+    .id.charAt(0);
+  numCorSelecionada = opcaoCorSelecionada;
+
+  const nomeCor = opcoesCores[numCorSelecionada];
+  tituloProduto.innerText =
+    "Pulseira loop esportiva " +
+    nomeCor.toLowerCase() +
+    " para caixa de " +
+    opcoesTamanho[numTamanhoSelecionado];
+
+    nomeCorSelecionada.innerText = 'Cor - ' + nomeCor;
+}
 
 function atualizarTamanho() {
   const opcaoTamanhoSelecionado = document
     .querySelector('[name="opcao-tamanho"]:checked')
     .id.charAt(0);
-    numTamanhoSelecionado = opcaoTamanhoSelecionado;
+  numTamanhoSelecionado = opcaoTamanhoSelecionado;
 
+  const tamanhoCaixa = opcoesTamanho[numTamanhoSelecionado];
 
-    const tamanhoCaixa = opcoesTamanho[numTamanhoSelecionado];
-    
-    console.log(tamanhoCaixa);
+  console.log(tamanhoCaixa);
 
-  tituloProduto.innerText = "Pulseira loop esportiva azul-inverno para caixa de " + tamanhoCaixa;
+  tituloProduto.innerText =
+    "Pulseira loop esportiva " +
+    opcoesCores[numCorSelecionada].toLowerCase() +
+    " para caixa de " +
+    tamanhoCaixa;
 
-  if (tamanhoCaixa === '41 mm') {
+  if (tamanhoCaixa === "41 mm") {
     imagemVisualizacao.classList.add("caixa-pequena");
-  } else{
+  } else {
     imagemVisualizacao.classList.remove("caixa-pequena");
-
   }
   //imagemVisualizacao.classList.add
-
-  }
+}
 
 function atualizarImagemSelecionada() {
   const opcaoImagemSelecionada = document
