@@ -34,13 +34,41 @@ function atualizarCorSelecionada() {
     " para caixa de " +
     opcoesTamanho[numTamanhoSelecionado];
 
-    nomeCorSelecionada.innerText = 'Cor - ' + nomeCor;
+  nomeCorSelecionada.innerText = "Cor - " + nomeCor;
+  imagemVisualizacao.src =
+    "./imagens/opcoes-cores/imagens-"
+     + nomeCor.toLowerCase() + 
+     "/imagem-" + numImagemSelecionada + ".jpeg";
+
+ imagemMiniatura0.src = "./imagens/opcoes-cores/imagens-"
+  + nomeCor.toLowerCase() +
+  "/imagem-0.jpeg";  imagemMiniatura1.src = "./imagens/opcoes-cores/imagens-"
+    + nomeCor.toLowerCase() +
+    "/imagem-1.jpeg";
+  imagemMiniatura2.src = "./imagens/opcoes-cores/imagens-"
+    + nomeCor.toLowerCase() +
+    "/imagem-2.jpeg";
 }
 
 function atualizarTamanho() {
   const opcaoTamanhoSelecionado = document
     .querySelector('[name="opcao-tamanho"]:checked')
-    .id.charAt(0);
+    .id.charAt(0);    function atualizarImagemSelecionada() {
+      const opcaoImagemSelecionada = document
+        .querySelector('[name="opcao-imagem"]:checked')
+        .id.charAt(0);
+    
+      numImagemSelecionada = opcaoImagemSelecionada;
+    
+      const nomeCor = opcoesCores[numCorSelecionada];
+    
+      imagemVisualizacao.src =
+        "./imagens/opcoes-cores/imagens-" +
+        nomeCor.toLowerCase() +
+        "/imagem-" +
+        numImagemSelecionada +
+        ".jpeg";
+    }
   numTamanhoSelecionado = opcaoTamanhoSelecionado;
 
   const tamanhoCaixa = opcoesTamanho[numTamanhoSelecionado];
@@ -66,10 +94,14 @@ function atualizarImagemSelecionada() {
     .querySelector('[name="opcao-imagem"]:checked')
     .id.charAt(0);
 
-  numImagemSelecionada = opcaoImagemSelecionada;
+  numImagemSelecionada = parseInt(opcaoImagemSelecionada);
+
+  const nomeCor = opcoesCores[numCorSelecionada];
 
   imagemVisualizacao.src =
-    "./imagens/opcoes-cores/imagens-azul-inverno/imagem-" +
+    "./imagens/opcoes-cores/imagens-" +
+    nomeCor.toLowerCase() +
+    "/imagem-" +
     numImagemSelecionada +
     ".jpeg";
 }
